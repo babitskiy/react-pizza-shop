@@ -5,6 +5,9 @@
   padding: 40px 0;
 
   .container {
+    @media (max-width: 645px) {
+      flex-direction: column-reverse;
+    }
     display: flex;
     align-items: center;
     justify-content: space-between;

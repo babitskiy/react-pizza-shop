@@ -5,8 +5,9 @@
   text-align: center;
   margin-bottom: 65px;
 
-  &:not(:nth-of-type(4n)) {
-    margin-right: 35px;
+  &-wrapper {
+    display: frex;
+    justify-content: center;
   }
 
   &__image {
