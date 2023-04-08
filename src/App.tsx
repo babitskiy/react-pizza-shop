@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import {} from './scss/app.scss';
 
-import Home from './pages/Home.tsx';
-import Cart from './pages/Cart.tsx';
-import FullPizza from './pages/FullPizza.tsx';
-import NotFound from './pages/NotFound.tsx';
-import MainLayout from './layouts/MainLayout.tsx';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import FullPizza from './pages/FullPizza';
+import NotFound from './pages/NotFound';
+import MainLayout from './layouts/MainLayout';
 
 // import pizzas from './assets/pizzas.json';
 

@@ -1,20 +1,21 @@
 import React from 'react';
 import qs from 'qs';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
-import Categories from '../components/Categories.tsx';
-import Sort, { sortList } from '../components/Sort.tsx';
-import PizzaBlock from '../components/PizzaBlock/index.tsx';
-import Skeleton from '../components/PizzaBlock/Skeleton.tsx';
-import Pagination from '../components/Pagination/index.tsx';
+import Categories from '../components/Categories';
+import Sort, { sortList } from '../components/Sort';
+import PizzaBlock from '../components/PizzaBlock/index';
+import Skeleton from '../components/PizzaBlock/Skeleton';
+import Pagination from '../components/Pagination/index';
 import { fetchPizzas } from '../redux/slices/pizzaSlice';
+import { useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
@@ -22,9 +23,9 @@ const Home: React.FC = () => {
   const { categoryId, sort, currentPage, searchValue } = useSelector((state: any) => state.filter);
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (idx: number) => {
+  const onChangeCategory = React.useCallback((idx: number) => {
     dispatch(setCategoryId(idx));
-  };
+  }, []);
 
   const onChangePage = (value: number) => {
     dispatch(setCurrentPage(value));
@@ -37,7 +38,6 @@ const Home: React.FC = () => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     dispatch(
-      // @ts-ignore
       fetchPizzas({
         sortBy,
         order,
